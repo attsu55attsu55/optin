@@ -1,0 +1,371 @@
+<style>
+:root {
+    --sky: #6BAED6;
+    --sky-light: #9ECAE1;
+    --sky-pale: #DEEFFA;
+    --lavender: #8B9DC3;
+    --lavender-light: #B8C4DE;
+    --lavender-pale: #EEF1F8;
+    --pink-accent: #D4899A;
+    --indigo: #3D5A8A;
+    --indigo-dark: #2B3F63;
+    --white: #FFFFFF;
+    --off-white: #F8FAFD;
+    --charcoal: #2d2d3a;
+    --gray: #6b6b7a;
+    --light-gray: #e4e8f0;
+    --grad: linear-gradient(135deg, #6BAED6 0%, #8B9DC3 50%, #C4A8C8 100%);
+    --grad-soft: linear-gradient(135deg, #DEEFFA 0%, #EEF1F8 50%, #F5EEF8 100%);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--white); color: var(--charcoal); line-height: 1.8; overflow-x: hidden; }
+
+  /* HERO */
+  .hero { background: var(--white); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px 24px 100px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: var(--grad-soft); opacity: 0.55; }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 5px; background: var(--grad); }
+  .hero-inner { max-width: 760px; width: 100%; text-align: center; position: relative; z-index: 1; }
+  .hero-badge { display: inline-block; background: var(--white); border: 1.5px solid var(--lavender-light); color: var(--indigo); font-size: 12px; font-weight: 700; letter-spacing: 0.15em; padding: 6px 20px; border-radius: 20px; margin-bottom: 32px; animation: fadeUp 0.6s ease both; box-shadow: 0 2px 12px rgba(107,174,214,0.15); }
+  .hero-eyebrow { font-size: 13px; color: var(--sky); letter-spacing: 0.1em; margin-bottom: 20px; animation: fadeUp 0.7s ease 0.1s both; }
+  .hero-title { font-family: 'Noto Serif JP', serif; font-size: clamp(28px, 6vw, 52px); font-weight: 700; color: var(--indigo-dark); line-height: 1.45; letter-spacing: 0.02em; margin-bottom: 20px; animation: fadeUp 0.8s ease 0.2s both; }
+  .hero-title .accent { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-subtitle { font-size: clamp(13px, 2.2vw, 15px); color: var(--gray); line-height: 2; max-width: 580px; margin: 0 auto 48px; animation: fadeUp 0.9s ease 0.3s both; padding: 20px 0; border-top: 1px solid var(--light-gray); border-bottom: 1px solid var(--light-gray); }
+  .hero-subtitle strong { color: var(--indigo); font-weight: 700; }
+  .hero-cta { animation: fadeUp 1s ease 0.4s both; }
+  .btn-primary { display: inline-block; background: var(--grad); color: var(--white); font-size: 16px; font-weight: 700; padding: 20px 52px; border-radius: 4px; text-decoration: none; letter-spacing: 0.05em; transition: all 0.3s ease; box-shadow: 0 4px 24px rgba(107,174,214,0.4); border: none; cursor: pointer; }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(107,174,214,0.5); }
+  .btn-sub { display: block; margin-top: 12px; font-size: 12px; color: var(--gray); letter-spacing: 0.05em; }
+  .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; animation: fadeUp 1.2s ease 0.8s both; }
+  .hero-scroll span { font-size: 10px; color: var(--lavender-light); letter-spacing: 0.15em; }
+  .scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--lavender-light), transparent); animation: scrollPulse 2s ease infinite; }
+
+  /* COMMON */
+  .section-inner { max-width: 720px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; color: var(--sky); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1.5px; background: var(--grad); }
+  .section-title { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: var(--indigo-dark); line-height: 1.55; margin-bottom: 40px; }
+
+  /* PAIN */
+  .pain { background: var(--white); padding: 88px 24px; }
+  .pain-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 48px; }
+  .pain-list li { display: flex; align-items: flex-start; gap: 16px; background: var(--off-white); padding: 18px 24px; border-left: 3px solid var(--pink-accent); font-size: 15px; color: var(--charcoal); line-height: 1.7; }
+  .pain-list li::before { content: '—'; color: var(--pink-accent); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .pain-stat { background: var(--grad); color: var(--white); padding: 36px 40px; text-align: center; border-radius: 4px; }
+  .pain-stat .num { font-family: 'Noto Serif JP', serif; font-size: clamp(40px, 8vw, 60px); font-weight: 900; line-height: 1; margin-bottom: 8px; }
+  .pain-stat .desc { font-size: 14px; color: rgba(255,255,255,0.85); letter-spacing: 0.05em; }
+  .pain-stat .source { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 12px; }
+
+  /* PERFORMANCE */
+  .performance { background: var(--lavender-pale); padding: 72px 24px; }
+  .perf-box { background: var(--white); border-top: 4px solid var(--sky); padding: 36px 40px; box-shadow: 0 4px 24px rgba(107,174,214,0.1); border-radius: 0 0 4px 4px; }
+  .perf-box .lead { font-family: 'Noto Serif JP', serif; font-size: clamp(15px, 2.5vw, 19px); font-weight: 600; color: var(--indigo-dark); line-height: 1.75; margin-bottom: 28px; }
+  .perf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+  .perf-item { background: var(--sky-pale); padding: 16px; text-align: center; border-radius: 4px; }
+  .perf-item .icon { font-size: 22px; margin-bottom: 6px; }
+  .perf-item .label { font-size: 13px; font-weight: 700; color: var(--indigo); line-height: 1.4; }
+
+  /* QUESTION */
+  .question { background: var(--white); padding: 88px 24px; }
+  .question-title { font-family: 'Noto Serif JP', serif; font-size: clamp(20px, 4vw, 30px); font-weight: 700; color: var(--indigo-dark); line-height: 1.6; margin-bottom: 48px; text-align: center; }
+  .question-title .hl { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .question-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 40px; }
+  .q-card { background: var(--off-white); border: 1.5px solid var(--light-gray); padding: 22px 20px; font-size: 14px; color: var(--charcoal); line-height: 1.7; border-radius: 4px; transition: border-color 0.2s, box-shadow 0.2s; }
+  .q-card:hover { border-color: var(--sky-light); box-shadow: 0 4px 16px rgba(107,174,214,0.12); }
+  .q-card .check { color: var(--sky); font-size: 16px; margin-bottom: 10px; display: block; font-weight: 700; }
+  .q-card-spring { grid-column: 1 / -1; background: var(--grad-soft); border: 1.5px solid var(--lavender-light); padding: 28px; border-radius: 4px; }
+  .q-card-spring .spring-q { font-family: 'Noto Serif JP', serif; font-size: clamp(15px, 2.5vw, 18px); font-weight: 600; color: var(--indigo-dark); margin-bottom: 12px; }
+  .q-card-spring .spring-body { font-size: 13px; color: var(--gray); line-height: 1.9; }
+
+  /* WEBINAR */
+  .webinar-intro { background: var(--lavender-pale); padding: 88px 24px; }
+  .reveal-box { background: var(--white); border-left: 4px solid var(--sky); padding: 28px 32px; margin-bottom: 48px; box-shadow: 0 2px 16px rgba(107,174,214,0.1); }
+  .reveal-box p { font-family: 'Noto Serif JP', serif; font-size: clamp(15px, 2.5vw, 20px); font-weight: 600; color: var(--indigo-dark); line-height: 1.75; }
+  .reveal-box p .accent { color: var(--sky); }
+  .content-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .content-list li { display: grid; grid-template-columns: 48px 1fr; gap: 0; align-items: start; background: var(--white); border-radius: 4px; overflow: hidden; }
+  .content-num { width: 48px; height: 56px; background: var(--grad); color: var(--white); font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .content-text { padding: 16px 20px; }
+  .content-text strong { display: block; font-size: 15px; font-weight: 700; color: var(--indigo-dark); margin-bottom: 4px; }
+  .content-text span { font-size: 13px; color: var(--gray); line-height: 1.8; }
+
+  /* HOST */
+  .host { background: var(--white); padding: 88px 24px; }
+  .host-card { display: grid; grid-template-columns: 110px 1fr; gap: 28px; align-items: start; margin-bottom: 28px; padding: 28px; background: var(--off-white); border-radius: 4px; }
+  @media (max-width: 520px) { .host-card { grid-template-columns: 1fr; } }
+  .host-avatar { width: 110px; height: 110px; border-radius: 50%; background: var(--grad-soft); display: flex; align-items: center; justify-content: center; font-size: 36px; flex-shrink: 0; border: 3px solid var(--lavender-light); }
+  .host-name { font-family: 'Noto Serif JP', serif; font-size: 20px; font-weight: 700; color: var(--indigo-dark); margin-bottom: 4px; }
+  .host-role { font-size: 12px; color: var(--sky); letter-spacing: 0.05em; margin-bottom: 14px; font-weight: 500; }
+  .host-bio { font-size: 14px; color: var(--gray); line-height: 1.9; }
+  .host-bio .hl { color: var(--indigo); font-weight: 700; }
+
+  /* VOICE */
+  .voice { background: var(--sky-pale); padding: 88px 24px; }
+  .voice-title { font-family: 'Noto Serif JP', serif; font-size: clamp(18px, 3.5vw, 26px); font-weight: 700; color: var(--indigo-dark); text-align: center; margin-bottom: 48px; }
+  .voice-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; max-width: 820px; margin: 0 auto; }
+  .voice-card { background: var(--white); padding: 28px 24px; border-radius: 4px; box-shadow: 0 2px 16px rgba(107,174,214,0.1); }
+  .voice-card .quote { font-size: 32px; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 12px; font-family: Georgia, serif; }
+  .voice-card p { font-size: 14px; color: var(--charcoal); line-height: 1.85; margin-bottom: 16px; }
+  .voice-card .attr { font-size: 12px; color: var(--sky); letter-spacing: 0.05em; font-weight: 500; }
+
+  /* FORM */
+  .form-section { background: var(--white); padding: 88px 24px; text-align: center; }
+  .form-section .section-title { text-align: center; margin-bottom: 10px; }
+  .form-sub { font-size: 14px; color: var(--gray); margin-bottom: 28px; }
+  .tokuten-box { background: var(--grad-soft); border: 1.5px solid var(--lavender-light); padding: 24px 28px; margin: 0 auto 16px; text-align: left; border-radius: 4px; max-width: 480px; }
+  .tokuten-label { font-size: 12px; font-weight: 700; color: var(--sky); letter-spacing: 0.1em; margin-bottom: 8px; }
+  .tokuten-title { font-family: 'Noto Serif JP', serif; font-size: 15px; font-weight: 700; color: var(--indigo-dark); line-height: 1.6; margin-bottom: 8px; }
+  .tokuten-desc { font-size: 13px; color: var(--gray); line-height: 1.8; }
+  .disclosure { font-size: 12px; color: var(--gray); margin: 0 auto 32px; line-height: 1.7; max-width: 480px; }
+  .form-wrap { max-width: 480px; margin: 0 auto; background: var(--off-white); padding: 40px 36px; border: 1px solid var(--light-gray); border-radius: 4px; }
+  .form-group { margin-bottom: 20px; text-align: left; }
+  .form-group label { display: block; font-size: 13px; font-weight: 700; color: var(--charcoal); margin-bottom: 8px; }
+  .form-group label .req { color: var(--pink-accent); margin-left: 4px; }
+  .form-group input { width: 100%; padding: 14px 16px; border: 1.5px solid var(--light-gray); font-size: 15px; font-family: 'Noto Sans JP', sans-serif; color: var(--charcoal); background: var(--white); outline: none; transition: border-color 0.2s; border-radius: 2px; }
+  .form-group input:focus { border-color: var(--sky); }
+  .form-group input::placeholder { color: #b0aab8; font-size: 14px; }
+  .btn-form { width: 100%; background: var(--grad); color: var(--white); font-size: 16px; font-weight: 700; padding: 20px; border: none; cursor: pointer; letter-spacing: 0.05em; font-family: 'Noto Sans JP', sans-serif; transition: all 0.3s; margin-top: 8px; border-radius: 2px; box-shadow: 0 4px 20px rgba(107,174,214,0.35); }
+  .btn-form:hover { opacity: 0.9; transform: translateY(-1px); }
+  .form-privacy { font-size: 11px; color: var(--gray); margin-top: 16px; line-height: 1.7; }
+
+  /* FOOTER */
+  .page-footer { background: var(--indigo-dark); padding: 32px 24px; text-align: center; }
+  .page-footer p { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.8; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.8; } }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* STICKY */
+  .sticky-cta { position: fixed; bottom: 24px; right: 24px; z-index: 100; opacity: 0; transform: translateY(10px); transition: all 0.4s ease; pointer-events: none; }
+  .sticky-cta.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .sticky-cta a { display: block; background: var(--grad); color: var(--white); font-size: 13px; font-weight: 700; padding: 14px 24px; border-radius: 24px; text-decoration: none; box-shadow: 0 4px 20px rgba(107,174,214,0.4); letter-spacing: 0.05em; }
+
+  @media (max-width: 480px) {
+    .form-wrap { padding: 28px 20px; }
+    .tokuten-box { padding: 20px; }
+    .reveal-box { padding: 20px 24px; }
+    .perf-box { padding: 24px 20px; }
+  }
+</style>
+
+<div class="sticky-cta" id="stickyCta">
+  <a href="#form">無料で参加する →</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">無料ウェビナー</div>
+    <p class="hero-eyebrow">自然療法で学ぶ花粉症ケアの入り口</p>
+    <h1 class="hero-title">
+      花粉症は、<br>
+      <span class="accent">花粉が原因</span>じゃなかった
+    </h1>
+    <p class="hero-subtitle">
+      〜目の痒み・鼻水・鼻詰まりと<strong>一生付き合わず</strong>春を迎えたい人のための<br>
+      自然療法で学ぶ花粉症ケア入門〜
+    </p>
+    <div class="hero-cta">
+      <a href="#form" class="btn-primary">無料で参加する</a>
+      <span class="btn-sub">登録無料・PDF特典つき</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- PAIN -->
+<div class="pain">
+  <div class="section-inner">
+    <p class="section-label reveal">こんな状況、ありませんか</p>
+    <h2 class="section-title reveal reveal-delay-1">毎年春になると、<br>また同じことが始まる</h2>
+    <ul class="pain-list">
+      <li class="reveal reveal-delay-1">目が痒くてたまらない。一日中目をこすっている</li>
+      <li class="reveal reveal-delay-2">鼻水が止まらず、仕事や集中したいことができない</li>
+      <li class="reveal reveal-delay-3">薬を飲んでも眠くなる。飲まないと症状が出る</li>
+      <li class="reveal reveal-delay-4">「今年こそ」と思うけど、結局また薬に頼っている</li>
+    </ul>
+    <div class="pain-stat reveal">
+      <div class="num">約6割</div>
+      <div class="desc">日本人の約6割が花粉症と答えている時代</div>
+      <div class="source">出典：ウェザーニュース調査・厚生労働省関連調査</div>
+    </div>
+  </div>
+</div>
+
+<!-- PERFORMANCE -->
+<div class="performance">
+  <div class="section-inner">
+    <p class="section-label reveal">見えていないコスト</p>
+    <h2 class="section-title reveal reveal-delay-1">花粉症の季節、あなたのパフォーマンスは<br>どれくらい下がっていますか？</h2>
+    <div class="perf-box reveal reveal-delay-2">
+      <p class="lead">集中力・睡眠の質・仕事の生産性・気分。<br>この春の2〜3ヶ月が、毎年繰り返されています。</p>
+      <div class="perf-grid">
+        <div class="perf-item"><div class="icon">🧠</div><div class="label">集中力の低下</div></div>
+        <div class="perf-item"><div class="icon">😴</div><div class="label">睡眠の質の低下</div></div>
+        <div class="perf-item"><div class="icon">📉</div><div class="label">仕事の生産性</div></div>
+        <div class="perf-item"><div class="icon">😔</div><div class="label">気分・QOLの低下</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUESTION -->
+<div class="question">
+  <div class="section-inner">
+    <h2 class="question-title reveal">もし、<span class="hl">花粉が原因ではなかった</span>としたら<br>何を変えればいいか、変わってきませんか？</h2>
+    <div class="question-cards">
+      <div class="q-card reveal reveal-delay-1"><span class="check">✓</span>毎年同じ春を繰り返したくない</div>
+      <div class="q-card reveal reveal-delay-2"><span class="check">✓</span>薬に頼り続けることに不安がある</div>
+      <div class="q-card reveal reveal-delay-3"><span class="check">✓</span>自然な方法で体質から変えたい</div>
+      <div class="q-card reveal reveal-delay-4"><span class="check">✓</span>花粉飛散情報を気にしない春を迎えたい</div>
+      <div class="q-card reveal reveal-delay-1"><span class="check">✓</span>薬を飲むと眠くなる（仕事に支障が出る）</div>
+      <div class="q-card reveal reveal-delay-2"><span class="check">✓</span>妊娠中・授乳中で薬を控えたい</div>
+      <div class="q-card-spring reveal">
+        <p class="spring-q">🌸 花粉症のない春、あなたは何をしたいですか？</p>
+        <p class="spring-body">窓を全開にして朝を迎える。マスクなしで外を歩く。子どもと公園で思い切り遊ぶ。仕事に集中できる春を過ごす。<br>症状がなくなると、時間もエネルギーも全然違う使い方ができます。</p>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center; margin-top:40px;">
+      <a href="#form" class="btn-primary">無料で参加する</a>
+    </div>
+  </div>
+</div>
+
+<!-- WEBINAR INTRO -->
+<div class="webinar-intro">
+  <div class="section-inner">
+    <p class="section-label reveal">このウェビナーでわかること</p>
+    <div class="reveal-box reveal">
+      <p>花粉症の原因は、<span class="accent">体の外ではなく内側にある</span>。<br>その見方が変わると、やるべきことが変わる。</p>
+    </div>
+    <ol class="content-list">
+      <li class="reveal reveal-delay-1">
+        <div class="content-num">1</div>
+        <div class="content-text">
+          <strong>見方を変える</strong>
+          <span>なぜ同じ空気を吸っているのに、反応する人としない人がいるのか。花粉症の本当の原因を腸・肝臓・自律神経の視点から解説します。</span>
+        </div>
+      </li>
+      <li class="reveal reveal-delay-2">
+        <div class="content-num">2</div>
+        <div class="content-text">
+          <strong>体は触ると変わる</strong>
+          <span>理屈より体験。今日すぐ試せるツボ（迎香）と呼吸法を使って、体が変わる感覚を実際に感じてもらいます。</span>
+        </div>
+      </li>
+      <li class="reveal reveal-delay-3">
+        <div class="content-num">3</div>
+        <div class="content-text">
+          <strong>続けられる人の共通点</strong>
+          <span>体質を変えた人たちが実践してきた「仕組みで続けるケア」の考え方。完璧にやる必要はありません。</span>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<!-- HOST -->
+<div class="host">
+  <div class="section-inner">
+    <p class="section-label reveal">講師紹介</p>
+    <div class="host-card reveal reveal-delay-1">
+      <div class="host-avatar">🌿</div>
+      <div>
+        <p class="host-name">片桐 航</p>
+        <p class="host-role">ホメオパス・自然療法家・学長</p>
+        <p class="host-bio">自身が鼻炎・緑内症・メニエール病を経験し、自然療法によって改善。「症状を抑えるのではなく、体が排出しなくていい状態をつくる」という考え方を実践・指導している。<span class="hl">Homeopathy Next School（HNS）学長</span>。</p>
+      </div>
+    </div>
+    <div class="host-card reveal reveal-delay-2">
+      <div class="host-avatar">🍃</div>
+      <div>
+        <p class="host-name">渡辺 篤志</p>
+        <p class="host-role">ホメオパシーネクスト代表</p>
+        <p class="host-bio">20年以上にわたる重度の花粉症を体質改善により克服。<span class="hl">「春が怖くなくなった」</span>という自身の体験をもとに、薬に頼らない生き方を広める活動を行っている。ホメオパシーネクスト代表。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VOICE -->
+<div class="voice">
+  <div class="section-inner" style="max-width:820px; margin:0 auto;">
+    <h2 class="voice-title reveal">参加者の声</h2>
+    <div class="voice-cards">
+      <div class="voice-card reveal reveal-delay-1">
+        <div class="quote">"</div>
+        <p>ツボを押したら本当に鼻が通った。こんなに違いを感じるとは思っていなかった。</p>
+        <div class="attr">30代・会社員</div>
+      </div>
+      <div class="voice-card reveal reveal-delay-2">
+        <div class="quote">"</div>
+        <p>「症状は体の排出の働き」という考え方が衝撃だった。薬で抑えることへの見方が変わった。</p>
+        <div class="attr">40代・主婦</div>
+      </div>
+      <div class="voice-card reveal reveal-delay-3">
+        <div class="quote">"</div>
+        <p>毎年憂鬱だった春が、去年は薬なしで乗り越えられた。信じていなかったけど、本当に変わった。</p>
+        <div class="attr">40代・ワーキングマザー</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="form-section" id="form">
+  <div class="section-inner">
+    <p class="section-label reveal" style="justify-content:center;">無料登録</p>
+    <h2 class="section-title reveal">花粉症は、花粉が原因じゃなかった</h2>
+    <p class="form-sub reveal">登録はこちらから。すぐに視聴できます。</p>
+    <div class="tokuten-box reveal">
+      <p class="tokuten-label">🎁 登録者全員にプレゼント</p>
+      <p class="tokuten-title">花粉症ケア入門ガイド｜見方・体験・続け方の3ステップ（PDF）</p>
+      <p class="tokuten-desc">セミナーで使用したスライド資料をPDF化。ツボの場所・呼吸法・続け方のコツをまとめた、見返すたびに役立つ一冊です。</p>
+    </div>
+    <p class="disclosure reveal">セミナーを観て「本格的に改善したい」と感じた方へ、継続ケアの選択肢もご紹介します（参加は自由です）。</p>
+    <div class="form-wrap reveal">
+      <div class="form-group">
+        <label>お名前（ニックネームOK）<span class="req">*</span></label>
+        <input type="text" placeholder="山田 花子">
+      </div>
+      <div class="form-group">
+        <label>メールアドレス<span class="req">*</span></label>
+        <input type="email" placeholder="example@email.com">
+      </div>
+      <button class="btn-form">無料でウェビナーを視聴する →</button>
+      <p class="form-privacy">ご登録いただいた個人情報は、ウェビナーのご案内・関連情報のお届けにのみ使用します。いつでも配信停止できます。</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="page-footer" id="page-footer">
+  <p>
+    © ホメオパシーネクスト｜渡辺篤志 & 片桐航<br>
+    <small>本ウェビナーの内容は一般的な情報提供を目的としており、医療的な診断・治療を代替するものではありません。</small>
+  </p>
+</div>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  const stickyCta = document.getElementById('stickyCta');
+  const hero = document.querySelector('.hero');
+  window.addEventListener('scroll', () => {
+    stickyCta.classList.toggle('show', hero.getBoundingClientRect().bottom < 0);
+  });
+</script>
